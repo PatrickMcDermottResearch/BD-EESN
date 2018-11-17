@@ -1,5 +1,5 @@
 #######Read in function file
-source("/Users/PatrickMcDermott/Desktop/Dissertation_Code/RNN_Code/Master_Bayes_RNN/masterBRNNFunctions_001.R")
+source("Functions/masterBRNNFunctions_001.R")
 ############# Libaries 
 # library(shapes)
 library(vegan)
@@ -26,12 +26,7 @@ library(maptools)
 library(shapefiles)
 library(scoringRules)
 library(GA)
-# library(devtools)
-# install_github(repo = "RcppTN",
-#                username = "olmjo",
-#                subdir = "pkg",
-#                ref = "development"
-# )
+
 
 par(mar=c(5.1,4.1,4.1,2.1))
 
@@ -39,51 +34,9 @@ par(mar=c(5.1,4.1,4.1,2.1))
 ######################################
 ##### Select dataset  ################
 ######################################
-# dataSet="SST"
-# dataSet="SSTBerliner"
-# dataSet="SSTEnsoCycle_2016"
-# dataSet="Lorenz3"
-# dataSet="Lorenz96"
+
 dataSet="multiLorenz"
-# dataSet="MJO_RMM1_RMM2"
-# dataSet="unemployment"
-
-#############set wd 
-############# wd for SST Data
-setwd("/Users/PatrickMcDermott/Documents/Data_Sets/SST")
-
-#############set wd 
-############# wd for MJO Data
-# setwd("/Users/PatrickMcDermott/Documents/Data_Sets/MJO_Data")
-
-
-#######set number of locs (or EOFs) 
-# numLocs=10
-
-if(dataSet=="MJO_RMM1_RMM2"){
-  numLocs=2
-  setwd("/Users/PatrickMcDermott/Documents/Data_Sets/MJO_Data")
-}
-
-if(dataSet=="SSTBerliner"  || dataSet=="SSTEnsoCycle_2016" ){
-  numLocs=10
-  setwd("/Users/PatrickMcDermott/Documents/Data_Sets/SST")
-}
-
-if(dataSet =="Lorenz96"){
-  numLocs=40
-  # numLocs=24
-  # numLocs=10
-}
-
-if(dataSet =="multiLorenz"){
-  numLocs=18
-}
-
-if(dataSet=="unemployment"){
-  numLocs=12
-}
-
+numLocs=18
 
 ############################
 ## Turn Data Types Off #####
@@ -104,8 +57,6 @@ dataTypeUnemploy=FALSE
 # allLocsSSTInd=TRUE
 allLocsSSTInd=FALSE
 
-set.seed(315)
-# set.seed(180)
 
 #########################################################################
 ########## Reduced Dimension Multi-Scale Lorenz-40 ######################
@@ -294,7 +245,7 @@ if(dataSet=="multiLorenz"){
 for(i in 1:6){
   
   dev.new()
-  cairo_ps("/Users/PatrickMcDermott/Desktop/Figure2.eps",height = 13,width=16)
+  pdf("Figure2.eps",height = 13,width=16)
   split.screen( rbind(c(0, 1,.45,1), c(0,1,.01,.45)))
   split.screen(c(2,3), screen=1)-> ind
   
