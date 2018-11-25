@@ -1,34 +1,7 @@
-#Read in funciton file 
-source("Functions/masterBRNNFunctions_001.R")
-############# Libaries 
-# library(shapes)
-library(vegan)
-library(pscl)
-library(animation)
-# library(mvnfast)
-library(RSNNS)
-library(randomForest)
-library(fields)
-library(truncnorm)
-library(RcppTN)
-library(matrixStats)
-library(dtw)
-library(verification)
-library(deSolve)
-library(glmnet)
-library(foreach)
-library(doParallel)
-library(ncdf4)
-library(abind)
-library(NMF)
-library(sp)
-library(maptools)
-library(shapefiles)
-library(scoringRules)
-library(GA)
 
-sourceCpp("Functions/ensembleESNCPPFuncts_001.cpp")
-
+####################################################
+##### RUN B-EESN ###################################
+####################################################
 
 ######### QESN Model
 embedInd=TRUE
@@ -40,7 +13,7 @@ featureLinkInd=TRUE
 phiSM=diag(numFullDimLocs)
 
 ####################################################
-##### Process Results for CV #######################
+##### Process Results for CV ############################
 ####################################################
 ####find min MSE
 curM=3
@@ -335,6 +308,11 @@ covProb=countCI/(numLocs*testLen)
 cat("Coveage Probability ", covProb ,"\n")
 
 
+
+
+####################################################
+##### RUN DB-EESN ###################################
+####################################################
 
 sourceCpp("Functions/DB-EESNNCPPFunctions.cpp")
 library(mvnfast)

@@ -1,33 +1,7 @@
-#Read in funciton file 
-source("Functions/masterBRNNFunctions_001.R")
-############# Libaries 
-# library(shapes)
-library(vegan)
-library(pscl)
-library(animation)
-# library(mvnfast)
-library(RSNNS)
-library(randomForest)
-library(fields)
-library(truncnorm)
-library(RcppTN)
-library(matrixStats)
-library(dtw)
-library(verification)
-library(deSolve)
-library(glmnet)
-library(foreach)
-library(doParallel)
-library(ncdf4)
-library(abind)
-library(NMF)
-library(sp)
-library(maptools)
-library(shapefiles)
-library(scoringRules)
-library(GA)
+#######################################################
+####### Run D-EESN  ####################################
+#######################################################
 
-sourceCpp("Functions/ensembleESNCPPFuncts_001.cpp")
 ######### QESN Model
 embedInd=TRUE
 quadInd=FALSE
@@ -275,6 +249,14 @@ skillScoreVar=1-colMeans((t(postMeanAll) - curYTestAllLocs[curMayIndex,] )^2)/co
 cat("D-EESN: % Skill Score >0 ", length(which(skillScoreVar>0))/numFullDimLocs , "\n")
 
 
+
+
+
+
+
+########################################################
+####### Run BD-EESN  ####################################
+########################################################
 
 sourceCpp("Functions/DB-EESNNCPPFunctions.cpp")
 library(mvnfast)
